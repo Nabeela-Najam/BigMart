@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">ADD PRODUCTS</h4>
+                  <p class="card-description">
+                    Add Products Here...!
+                  </p>
+                  <form class="forms-sample" method="post" action="#" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+
+                      <div class="form-group">
+                      <label>Select Category</label>
+                        <select class="form-control" name="pcategory" >
+                          <option>{{data.pcategory}}</option>
+                          {% for i in cat %}
+                          <option>{{i.cname}}</option>
+                          {% endfor %}
+
+                        </select>
+                      </div>
+
+                      <label>Product Name</label>
+                      <input type="text" class="form-control"  placeholder="Product Name" name="pname" value="{{data.pname}}">
+                    </div>
+                    <div class="form-group">
+                      <label >Price</label>
+                      <input type="text" class="form-control" placeholder="Price" name="pprice" value="{{data.pprice}}">
+                    </div>
+
+                    <div class="form-group">
+                      <label >Description</label>
+                      <textarea class="form-control"  rows="4" name="pdescription">{{data.pdescription}}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Upload category image</label> <br> <br>
+                      <img src="{{data.pimage.url}}" width="100px" height="100px">
+                      <input type="file" class="form-control" name="pimage">
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+</body>
+</html>
+{% endblock %}

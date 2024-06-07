@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">EDIT CATEGORY DETAILS</h4>
+                  <p class="card-description">
+                    Edit Categories Here...!
+                  </p>
+                  <form class="forms-sample" method="post" action="{% url 'update_category' catid=data.id %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputName1">Category Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="cname" value="{{data.cname}}">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Description</label>
+                      <textarea class="form-control" id="exampleTextarea1" rows="4" name="cdescription">{{data.cdescription}}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Upload category image</label> <br> <br>
+                        <img src="{{data.cimage.url}}" width="100px" height="100px">
+                      <input type="file" class="form-control" name="cimage" value="{{data.cimage}}">
+                    </div>
+
+<!--                    <div class="form-group">-->
+<!--                      <label>File upload</label>-->
+<!--                      <input type="file" name="img[]" class="file-upload-default">-->
+<!--                      <div class="input-group col-xs-12">-->
+<!--                        <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">-->
+<!--                        <span class="input-group-append">-->
+<!--                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>-->
+<!--                        </span>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleInputCity1">City</label>-->
+<!--                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">-->
+<!--                    </div>-->
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+</body>
+</html>
+{% endblock %}
